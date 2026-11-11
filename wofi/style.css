@@ -1,0 +1,115 @@
+/* Dracula theme for wofi
+ * Palette: https://draculatheme.com/contribute
+ */
+
+@define-color dracula-bg        #282a36;
+@define-color dracula-current   #44475a;
+@define-color dracula-fg        #f8f8f2;
+@define-color dracula-comment   #6272a4;
+@define-color dracula-cyan      #8be9fd;
+@define-color dracula-green     #50fa7b;
+@define-color dracula-orange    #ffb86c;
+@define-color dracula-pink      #ff79c6;
+@define-color dracula-purple    #bd93f9;
+@define-color dracula-red       #ff5555;
+@define-color dracula-yellow    #f1fa8c;
+
+* {
+    font-family: "Hack Nerd Font", "DejaVu Sans", sans-serif;
+    font-size: 14px;
+}
+
+window {
+    margin: 0;
+    padding: 0;
+    border: 2px solid @dracula-purple;
+    border-radius: 12px;
+    background-color: @dracula-bg;
+    color: @dracula-fg;
+}
+
+#outer-box {
+    margin: 0;
+    padding: 12px;
+    background-color: transparent;
+}
+
+#input {
+    margin: 0 0 10px 0;
+    padding: 10px 14px;
+    border: 2px solid @dracula-current;
+    border-radius: 8px;
+    background-color: @dracula-current;
+    color: @dracula-fg;
+}
+
+#input:focus {
+    border-color: @dracula-purple;
+}
+
+#scroll {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+#inner-box {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+#entry {
+    margin: 2px 0;
+    padding: 8px 12px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: transparent;
+    color: @dracula-fg;
+}
+
+#entry:hover {
+    background-color: alpha(@dracula-current, 0.6);
+}
+
+#entry:selected {
+    border-color: @dracula-purple;
+    background-color: @dracula-current;
+    color: @dracula-fg;
+}
+
+#text {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    color: @dracula-fg;
+}
+
+#entry:selected #text,
+#text:selected {
+    color: @dracula-cyan;
+}
+
+#img {
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+/* Scrollbar */
+scrollbar {
+    border: none;
+    background-color: transparent;
+}
+
+scrollbar slider {
+    min-width: 6px;
+    min-height: 6px;
+    border: none;
+    border-radius: 3px;
+    background-color: @dracula-comment;
+}
+
+scrollbar slider:hover {
+    background-color: @dracula-purple;
+}

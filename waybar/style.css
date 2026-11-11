@@ -1,0 +1,202 @@
+/* ─────────────────────────────────────────────────────────────
+   Waybar · Dracula
+   palette: #282a36 bg · #44475a line · #f8f8f2 fg · #6272a4 comment
+            #bd93f9 purple · #ff79c6 pink · #8be9fd cyan
+            #50fa7b green · #ffb86c orange · #ff5555 red · #f1fa8c yellow
+   ───────────────────────────────────────────────────────────── */
+
+* {
+    font-family: "Hack Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(40, 42, 54, 0.94);
+    border: 1px solid rgba(68, 71, 90, 0.95);
+    border-radius: 16px;
+    color: #f8f8f2;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    background-color: #282a36;
+    border: 1px solid #6272a4;
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: #f8f8f2;
+    padding: 6px 8px;
+}
+
+/* ── Workspaces ─────────────────────────────────────────────── */
+
+#workspaces {
+    margin: 0 8px 0 14px;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 12px;
+    margin: 6px 2px;
+    min-width: 16px;
+    border: none;
+    border-radius: 9px;
+    background-color: transparent;
+    color: #6272a4;
+    box-shadow: none;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: 0.2s;
+}
+
+#workspaces button:hover {
+    background-color: rgba(98, 114, 164, 0.28);
+    color: #f8f8f2;
+}
+
+#workspaces button.active {
+    background-image: linear-gradient(135deg, #bd93f9, #ff79c6);
+    color: #282a36;
+    box-shadow: 0 0 8px rgba(189, 147, 249, 0.45);
+}
+
+#workspaces button.urgent {
+    background-color: #ff5555;
+    color: #282a36;
+}
+
+/* ── Pills (left + right) ───────────────────────────────────── */
+
+#custom-battery,
+#network,
+#disk,
+#custom-volume,
+#backlight,
+#memory,
+#cpu,
+#custom-wlogout {
+    padding: 0 12px;
+    margin: 6px 3px;
+    border-radius: 11px;
+    background-color: rgba(68, 71, 90, 0.50);
+    color: #f8f8f2;
+    transition-property: background-color, color;
+    transition-duration: 0.2s;
+}
+
+#custom-battery:hover,
+#network:hover,
+#disk:hover,
+#custom-volume:hover,
+#backlight:hover,
+#memory:hover,
+#cpu:hover {
+    background-color: rgba(68, 71, 90, 0.95);
+}
+
+/* ── Clock ──────────────────────────────────────────────────── */
+
+#clock {
+    padding: 0 18px;
+    margin: 6px 0;
+    border: 1px solid rgba(189, 147, 249, 0.30);
+    border-radius: 11px;
+    background-color: rgba(68, 71, 90, 0.45);
+    color: #f8f8f2;
+}
+
+/* Last pill sits flush against the bar edge. */
+#custom-wlogout {
+    margin-right: 8px;
+    padding: 0 13px;
+    font-size: 15px;
+    color: #ff5555;
+}
+
+#custom-wlogout:hover {
+    background-color: #ff5555;
+    color: #282a36;
+}
+
+/* ── State colors ───────────────────────────────────────────── */
+
+#custom-volume.unavailable {
+    color: #6272a4;
+}
+
+#custom-volume.low {
+    color: #8be9fd;
+}
+
+#custom-volume.high {
+    color: #8be9fd;
+}
+
+#custom-volume.muted {
+    color: #ff5555;
+}
+
+#custom-battery.ac {
+    color: #f1fa8c;
+}
+
+#custom-battery.discharging {
+    color: #50fa7b;
+}
+
+#custom-battery.charging {
+    color: #50fa7b;
+}
+
+#custom-battery.warning {
+    color: #ffb86c;
+}
+
+#custom-battery.critical {
+    color: #ff5555;
+}
+
+#network.wifi {
+    color: #8be9fd;
+}
+
+#network.ethernet {
+    color: #8be9fd;
+}
+
+#network.linked {
+    color: #6272a4;
+}
+
+#network.disconnected {
+    color: #ff5555;
+}
+
+#disk.warning {
+    color: #ffb86c;
+}
+
+#disk.critical {
+    color: #ff5555;
+}
+
+#cpu.warning {
+    color: #ffb86c;
+}
+
+#cpu.critical {
+    color: #ff5555;
+}
+
+#memory.warning {
+    color: #ffb86c;
+}
+
+#memory.critical {
+    color: #ff5555;
+}

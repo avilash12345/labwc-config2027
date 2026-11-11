@@ -1,0 +1,21 @@
+# ~/.config/wofi/config
+width=640
+height=420
+location=center
+prompt=Search
+filter_rate=50
+
+allow_markup=true
+allow_images=true
+image_size=24
+
+no_actions=true
+insensitive=true
+matching=fuzzy
+
+halign=fill
+orientation=vertical
+content_halign=fill
+dynamic_lines=true
+line_wrap=word
+hide_scroll=false

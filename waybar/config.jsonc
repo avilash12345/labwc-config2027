@@ -1,0 +1,159 @@
+// ─────────────────────────────────────────────────────────────
+//  Waybar · Dracula
+//  left: workspaces │ center: clock
+//  right: volume · brightness · battery · network · disk · ram · cpu · power
+// ─────────────────────────────────────────────────────────────
+{
+    // "overlay" keeps the bar above fullscreen windows (labwc hides "top" layers in fullscreen).
+    "layer": "overlay",
+    "position": "top",
+    "height": 40,
+    "spacing": 8,
+
+    // Floating bar: keeps a small gap around the panel.
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+
+    "modules-left": [
+        "ext/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/volume",
+        "backlight",
+        "custom/battery",
+        "network",
+        "disk",
+        "memory",
+        "cpu",
+        "custom/wlogout"
+    ],
+
+    // ── Workspaces (labwc / wlroots ext-workspace protocol) ──
+    "ext/workspaces": {
+        "format": "{icon}",
+        "sort-by-id": true,
+        "on-click": "activate",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "Workspace 1": "1",
+            "Workspace 2": "2",
+            "Workspace 3": "3",
+            "Workspace 4": "4",
+            "Workspace 5": "5",
+            "Workspace 6": "6",
+            "default": "●"
+        }
+    },
+
+    // ── Battery (falls back to AC on desktops/VMs) ──
+    "custom/battery": {
+        "exec": "/home/debian/.config/waybar/scripts/battery.sh",
+        "interval": 30,
+        "return-type": "json",
+        "escape": false,
+        "tooltip": true
+    },
+
+    // ── Network ──
+    "network": {
+        "interval": 5,
+        "format-wifi": "<span foreground='#8be9fd'></span>  {essid}",
+        "format-ethernet": "<span foreground='#8be9fd'></span>  ethernet",
+        "format-linked": "<span foreground='#6272a4'></span>  link",
+        "format-disconnected": "<span foreground='#ff5555'></span>  offline",
+        "format-icons": ["", "", "", ""],
+        "tooltip-format-wifi": "{essid} · {signalStrength}% · {ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname} · {ipaddr}/{cidr}",
+        "tooltip-format-linked": "{ifname} · no address",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+
+    // ── Disk usage ──
+    "disk": {
+        "interval": 30,
+        "path": "/",
+        "format": "<span foreground='#bd93f9'></span>  {percentage_used}%",
+        "format-warning": "<span foreground='#ffb86c'></span>  {percentage_used}%",
+        "format-critical": "<span foreground='#ff5555'></span>  {percentage_used}%",
+        "tooltip-format": "{used} used of {total} on {path} ({percentage_used}%)",
+        "states": {
+            "warning": 75,
+            "critical": 90
+        }
+    },
+
+    // ── Date & time ──
+    "clock": {
+        "format": "<span foreground='#6272a4'>{0:%a %d %b}</span>   <span foreground='#f8f8f2'><b>{0:%H:%M}</b></span>",
+        "format-alt": "<span foreground='#6272a4'>{0:%A}</span>   <span foreground='#f8f8f2'><b>{0:%d %B %Y}</b></span>",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#bd93f9'><b>{}</b></span>",
+                "weekdays": "<span color='#8be9fd'><b>{}</b></span>",
+                "days": "<span color='#f8f8f2'>{}</span>",
+                "weeks": "<span color='#6272a4'>{}</span>",
+                "today": "<span color='#50fa7b'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    // ── Volume (custom: always visible, even without audio) ──
+    "custom/volume": {
+        "exec": "/home/debian/.config/waybar/scripts/volume.sh",
+        "interval": 2,
+        "return-type": "json",
+        "escape": false,
+        "tooltip": true,
+        "on-click": "sh -c 'command -v pavucontrol >/dev/null && exec pavucontrol'",
+        "on-click-right": "/home/debian/.config/waybar/scripts/volume.sh mute",
+        "on-scroll-up": "/home/debian/.config/waybar/scripts/volume.sh up",
+        "on-scroll-down": "/home/debian/.config/waybar/scripts/volume.sh down"
+    },
+
+    // ── Brightness ──
+    "backlight": {
+        "format": "<span foreground='#ffb86c'></span>  {percent}%",
+        "tooltip": false
+    },
+
+    // ── RAM ──
+    "memory": {
+        "interval": 5,
+        "format": "<span foreground='#ff79c6'></span>  {percentage}%",
+        "tooltip-format": "RAM  {used:0.1f} GiB / {total:0.1f} GiB  ({percentage}%)"
+    },
+
+    // ── CPU ──
+    "cpu": {
+        "interval": 2,
+        "format": "<span foreground='#50fa7b'></span>  {usage}%",
+        "states": {
+            "warning": 60,
+            "critical": 85
+        },
+        "tooltip-format": "CPU  {usage}%"
+    },
+
+    // ── wlogout ──
+    "custom/wlogout": {
+        "format": "⏻",
+        "tooltip": true,
+        "tooltip-format": "Session menu",
+        "on-click": "wlogout"
+    }
+}

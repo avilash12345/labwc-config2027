@@ -1,0 +1,55 @@
+/* wlogout · Dracula */
+
+* {
+    background-image: none;
+    box-shadow: none;
+    font-family: "Hack Nerd Font", sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+window {
+    background-color: rgba(40, 42, 54, 0.96);
+}
+
+button {
+    min-width: 150px;
+    min-height: 150px;
+    margin: 10px;
+    border: 1px solid #44475a;
+    border-bottom: 3px solid #6272a4;
+    border-radius: 18px;
+    background-color: #44475a;
+    color: #f8f8f2;
+    font-size: 30px;
+    transition-property: background-color, color, border-color;
+    transition-duration: 0.2s;
+}
+
+button label {
+    font-size: 30px;
+    padding-bottom: 120px;
+}
+
+button:hover,
+button:focus,
+button:active {
+    background-color: #6272a4;
+    border-color: #bd93f9;
+    color: #f8f8f2;
+    outline-style: none;
+}
+
+#lock      { border-bottom-color: #8be9fd; }
+#logout    { border-bottom-color: #bd93f9; }
+#suspend   { border-bottom-color: #f1fa8c; }
+#hibernate { border-bottom-color: #ffb86c; }
+#reboot    { border-bottom-color: #50fa7b; }
+#shutdown  { border-bottom-color: #ff5555; }
+
+#lock:hover      { background-color: #8be9fd; color: #282a36; border-color: #8be9fd; }
+#logout:hover    { background-color: #bd93f9; color: #282a36; border-color: #bd93f9; }
+#suspend:hover   { background-color: #f1fa8c; color: #282a36; border-color: #f1fa8c; }
+#hibernate:hover { background-color: #ffb86c; color: #282a36; border-color: #ffb86c; }
+#reboot:hover    { background-color: #50fa7b; color: #282a36; border-color: #50fa7b; }
+#shutdown:hover  { background-color: #ff5555; color: #282a36; border-color: #ff5555; }
